@@ -1,0 +1,13 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /0.1/
+spring:
+  application:
+    name: portal-bancario
+    version: develop
+  datasource:
+    url: jdbc:mariadb://192.168.1.56:33066/dbPro
+    username: jhd
+    password: 123456
+    driver-class-name: org.mariadb.jdbc.Driver
