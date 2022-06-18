@@ -37,7 +37,12 @@ CREATE TABLE  IF NOT EXISTS `deudas_usuario`(
 	banco_id int(10) NOT NULL,	
 	valor_deuda bigint(100) NOT NULL,
 	valor_pagado_deuda bigint(100) NOT NULL, 
+<<<<<<< HEAD
 	valor_restante_deuda bigint(100) NOT NULL
+=======
+	valor_restante_deuda bigint(100) NOT NULL, 
+	detalle_deuda_id varchar(100)
+>>>>>>> 253cea1901d771bd8aa76a8723e1f8f6a6880c50
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Creacion de Tabla DetalleDeuda
@@ -81,6 +86,7 @@ INSERT INTO `deudas_usuario`(
 
 
 -- Insertar Valores tabla DetalleDeuda 
+<<<<<<< HEAD
 INSERT INTO `detalle_deuda` (factura_id, banco_id, valor_pagado, fecha_pago ) 
 VALUES (1,1,50000,'2022/05/10'),
 	(2,2,150000,'2022/05/11'),
@@ -88,4 +94,13 @@ VALUES (1,1,50000,'2022/05/10'),
 	(4,3,50000,'2022/05/13'),
 	(5,4,500000,'2022/05/14'),
 	(6,5,500000,'2022/05/15')	
+=======
+INSERT INTO `detalleDeuda` (factura_id, valor_pagado, fecha_pago ) 
+VALUES (1,50000,'2022/05/10'),
+	(2,150000,'2022/05/11'),
+	(3,150000,'2022/05/12'),
+	(4,50000,'2022/05/13'),
+	(5,500000,'2022/05/14'),
+	(6,500000,'2022/05/15')	
+>>>>>>> 253cea1901d771bd8aa76a8723e1f8f6a6880c50
 ;
