@@ -37,19 +37,15 @@ CREATE TABLE  IF NOT EXISTS `deudas_usuario`(
 	banco_id int(10) NOT NULL,	
 	valor_deuda bigint(100) NOT NULL,
 	valor_pagado_deuda bigint(100) NOT NULL, 
-<<<<<<< HEAD
 	valor_restante_deuda bigint(100) NOT NULL
-=======
-	valor_restante_deuda bigint(100) NOT NULL, 
-	detalle_deuda_id varchar(100)
->>>>>>> 253cea1901d771bd8aa76a8723e1f8f6a6880c50
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Creacion de Tabla DetalleDeuda
 CREATE TABLE  IF NOT EXISTS `detalle_deuda`( 
 	factura_id int PRIMARY KEY NOT NULL, 
-	valor_pagado bigint(100),
 	banco_id int(10) NOT NULL,
+	usuario_id int(10) NOT NULL,
+	valor_pagado bigint(100),	
 	fecha_pago DATE	
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -74,33 +70,26 @@ VALUES (1,"BanColombia",1234567890),
 
 -- Insertar Valores tabla DeudasUsuario
 INSERT INTO `deudas_usuario`(
-	deuda_id,usuario_id,banco_id,valor_deuda,valor_pagado_deuda,valor_restante_deuda
+	deuda_id,usuario_id,banco_id,
+	valor_deuda,
+	valor_pagado_deuda,
+	valor_restante_deuda
 ) VALUES (1,1,1,500000,50000,450000),
-	(2,1,2,	600000,	300000,	600000),
-	(3,2,4,	700000,	0, 700000),
+	(2,1,2,	600000,	300000,	300000),
+	(3,2,4,	700000,	500000, 200000),
 	(4,2,3,	300000,	50000,	250000),
 	(5,3,2,	700000,	0,	700000),
-	(6,3,4,	300000,	50000,	250000),
+	(6,3,4,	850000,	0,	850000),
 	(7,3,5,	3000000,500000,	2500000)
 ;
 
 
 -- Insertar Valores tabla DetalleDeuda 
-<<<<<<< HEAD
-INSERT INTO `detalle_deuda` (factura_id, banco_id, valor_pagado, fecha_pago ) 
-VALUES (1,1,50000,'2022/05/10'),
-	(2,2,150000,'2022/05/11'),
-	(3,2,150000,'2022/05/12'),
-	(4,3,50000,'2022/05/13'),
-	(5,4,500000,'2022/05/14'),
-	(6,5,500000,'2022/05/15')	
-=======
-INSERT INTO `detalleDeuda` (factura_id, valor_pagado, fecha_pago ) 
-VALUES (1,50000,'2022/05/10'),
-	(2,150000,'2022/05/11'),
-	(3,150000,'2022/05/12'),
-	(4,50000,'2022/05/13'),
-	(5,500000,'2022/05/14'),
-	(6,500000,'2022/05/15')	
->>>>>>> 253cea1901d771bd8aa76a8723e1f8f6a6880c50
+INSERT INTO `detalle_deuda` (factura_id, banco_id,usuario_id, valor_pagado, fecha_pago ) 
+VALUES (1,1,1,50000,'2022/05/10'),
+	(2,2,1,150000,'2022/05/11'),
+	(3,2,1,150000,'2022/05/12'),
+	(4,3,2,50000,'2022/05/13'),
+	(5,4,2,500000,'2022/05/14'),
+	(6,5,3,500000,'2022/05/15')	
 ;
