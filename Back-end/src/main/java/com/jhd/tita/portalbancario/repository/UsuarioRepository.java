@@ -10,4 +10,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity,Integer> 
 
     UsuarioEntity findByUserName(String userName);
 
+    UsuarioEntity findByUsuariosId(Long id);
+
 }

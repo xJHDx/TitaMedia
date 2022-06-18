@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,4 +22,5 @@ public class UsuarioEntity {
     private double cedula;
     private double telefono;
     private String bancos;
+
 }
