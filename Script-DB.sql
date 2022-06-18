@@ -37,7 +37,7 @@ CREATE TABLE  IF NOT EXISTS `deudasUsuario`(
 	banco_id int(10) NOT NULL,	
 	valor_deuda bigint(100) NOT NULL,
 	valor_pagado_deuda bigint(100) NOT NULL, 
-	valor_restante_dedua bigint(100) NOT NULL, 
+	valor_restante_deuda bigint(100) NOT NULL, 
 	detalle_deuda_id varchar(100)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
