@@ -15,8 +15,8 @@ public class DeudasUsuarioEntity {
     private Integer deudaId;
     private Integer usuarioId;
     private Integer bancoId;
-    private double valorDeuda;
-    private double valorPagadoDeuda;
-    private double valorRestanteDeuda;
+    private Integer valorDeuda;
+    private Integer valorPagadoDeuda;
+    private Integer valorRestanteDeuda;
 
 }

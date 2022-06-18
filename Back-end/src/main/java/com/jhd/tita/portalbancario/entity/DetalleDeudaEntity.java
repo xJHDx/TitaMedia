@@ -15,7 +15,8 @@ public class DetalleDeudaEntity {
     @Id
     private Integer facturaId;
     private int BancoId;
-    private double valorPagado;
+    private int usuarioId;
+    private Integer valorPagado;
     private Date fechaPago;
 
 

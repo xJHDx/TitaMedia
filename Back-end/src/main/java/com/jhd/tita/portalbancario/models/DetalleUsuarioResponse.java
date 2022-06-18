@@ -17,8 +17,9 @@ public class DetalleUsuarioResponse {
 
     private Integer usuariosId;
     private String nombreApellido;
-    private double cedula;
-    private BancoEntities bancoEntities;
+    private Integer cedula;
+    private Long telefono;
+    private List<BancoEntities> bancoEntities;
 
     @Data
     @Builder
@@ -36,9 +37,9 @@ public class DetalleUsuarioResponse {
     @NoArgsConstructor
     public static class DeudasUsuario{
         private Integer deudaId;
-        private double valorDeuda;
-        private double valorPagadoDeuda;
-        private double valorRestanteDeuda;
+        private Integer valorDeuda;
+        private Integer valorPagadoDeuda;
+        private Integer valorRestanteDeuda;
         private List<DetalleDeudaEntity> detallesPagos;
     }
 

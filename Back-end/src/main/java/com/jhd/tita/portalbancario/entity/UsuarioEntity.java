@@ -19,8 +19,8 @@ public class UsuarioEntity {
     private String userName;
     private String password;
     private String nombreApellido;
-    private double cedula;
-    private double telefono;
+    private Integer cedula;
+    private Long telefono;
     private String bancos;
 
 }

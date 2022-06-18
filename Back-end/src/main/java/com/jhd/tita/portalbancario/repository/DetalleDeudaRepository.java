@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface DetalleDeudaRepository extends JpaRepository<DetalleDeudaEntity,Integer> {
 
-    @Query(value = "select * from detalle_deuda where banco_id = :bancoId",nativeQuery = true)
-    List<DetalleDeudaEntity> findByBancoId(@Param("bancoId") int bancoId);
+    @Query(value = "select * from detalle_deuda where banco_id = :bancoId and usuario_id = :usuarioId",nativeQuery = true)
+    List<DetalleDeudaEntity> findByBancoIdAndUsuarioId(@Param("bancoId") int bancoId, @Param("usuarioId") Long usuarioId);
 
 }

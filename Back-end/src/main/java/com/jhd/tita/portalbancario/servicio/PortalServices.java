@@ -30,9 +30,6 @@ public class PortalServices {
     private BancoRepository bancoRepository;
 
     @Autowired
-    private DetalleDeudaRepository detalleDeudaRepository;
-
-    @Autowired
     DeudasUsuarioRepository deudasUsuarioRepository;
 
     @Autowired
@@ -57,12 +54,7 @@ public class PortalServices {
 
         List<DeudasUsuarioEntity> deudasAsociadas = deudasUsuarioRepository.findByUsuarioId(Math.toIntExact(usuario.getUsuariosId()));
 
-        List<List<DetalleDeudaEntity>> detallePagos = new ArrayList<>();
-
-        for(DeudasUsuarioEntity deudasUsuario:deudasAsociadas){
-            detallePagos.add(detalleDeudaRepository.findByBancoId(deudasUsuario.getBancoId()));
-        }
-        return builderUtils.MapObjec(usuario,bancosAsociados,deudasAsociadas,detallePagos);
+        return builderUtils.MapObjec(usuario,bancosAsociados,deudasAsociadas);
     }
 
 
