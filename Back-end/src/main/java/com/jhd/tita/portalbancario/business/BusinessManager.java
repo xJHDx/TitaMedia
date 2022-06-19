@@ -1,5 +1,6 @@
 package com.jhd.tita.portalbancario.business;
 
+import com.jhd.tita.portalbancario.entity.DetalleDeudaEntity;
 import com.jhd.tita.portalbancario.entity.UsuarioEntity;
 import com.jhd.tita.portalbancario.enums.ErrorEnum;
 import com.jhd.tita.portalbancario.exceptions.ApiException;
@@ -26,8 +27,8 @@ public class BusinessManager {
         return portalServices.getDetalleUsuario(usuarioId);
     }
 
-    public String efectuarPago(){
-        return null;
+    public String efectuarPago(DetalleDeudaEntity detalleDeudaEntity){
+        return portalServices.LogicPago(detalleDeudaEntity);
     }
 
 }

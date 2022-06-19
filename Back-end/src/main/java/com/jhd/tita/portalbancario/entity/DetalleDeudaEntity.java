@@ -1,10 +1,9 @@
 package com.jhd.tita.portalbancario.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -13,10 +12,13 @@ import java.util.Date;
 public class DetalleDeudaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer facturaId;
     private int BancoId;
     private int usuarioId;
     private Integer valorPagado;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", timezone = "America/Bogota")
     private Date fechaPago;
 
 

@@ -1,6 +1,7 @@
 package com.jhd.tita.portalbancario.controller;
 
 import com.jhd.tita.portalbancario.business.BusinessManager;
+import com.jhd.tita.portalbancario.entity.DetalleDeudaEntity;
 import com.jhd.tita.portalbancario.models.AuthRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,8 +34,8 @@ public class ApiController {
     }
 
     @PostMapping("/RealizarPago")
-    public ResponseEntity<?> RealizarPagoDeuda(){
-        return new ResponseEntity<>(businessManager.efectuarPago(),HttpStatus.OK);
+    public ResponseEntity<?> RealizarPagoDeuda(@RequestBody DetalleDeudaEntity detalleDeudaEntity){
+        return new ResponseEntity<>(businessManager.efectuarPago(detalleDeudaEntity),HttpStatus.OK);
     }
 
 }

@@ -2,9 +2,7 @@ package com.jhd.tita.portalbancario.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -12,6 +10,7 @@ import javax.persistence.Table;
 public class DeudasUsuarioEntity {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer deudaId;
     private Integer usuarioId;
     private Integer bancoId;

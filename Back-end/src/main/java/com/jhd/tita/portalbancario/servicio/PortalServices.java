@@ -17,7 +17,6 @@ import com.jhd.tita.portalbancario.utils.GSonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,6 +30,9 @@ public class PortalServices {
 
     @Autowired
     DeudasUsuarioRepository deudasUsuarioRepository;
+
+    @Autowired
+    private DetalleDeudaRepository detalleDeudaRepository;
 
     @Autowired
     BuilderUtils builderUtils;
@@ -57,5 +59,26 @@ public class PortalServices {
         return builderUtils.MapObjec(usuario,bancosAsociados,deudasAsociadas);
     }
 
+
+    public String LogicPago(DetalleDeudaEntity detalleDeudaEntity){
+
+        DeudasUsuarioEntity deudasUsuario = deudasUsuarioRepository.findByBancoIdAndUsuarioId(detalleDeudaEntity.getUsuarioId(),detalleDeudaEntity.getBancoId());
+
+        if(detalleDeudaEntity.getValorPagado() > deudasUsuario.getValorRestanteDeuda() ){
+            System.out.println("es mayor");
+            throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
+        }
+
+        Integer nuevoValorPagado = deudasUsuario.getValorPagadoDeuda() + detalleDeudaEntity.getValorPagado();
+        deudasUsuario.setValorPagadoDeuda(nuevoValorPagado);
+
+        Integer nuevoValorRestante = deudasUsuario.getValorRestanteDeuda() - detalleDeudaEntity.getValorPagado();
+        deudasUsuario.setValorRestanteDeuda(nuevoValorRestante);
+
+        deudasUsuarioRepository.save(deudasUsuario);
+        detalleDeudaRepository.save(detalleDeudaEntity);
+
+        return "Pago Exitoso";
+    }
 
 }
