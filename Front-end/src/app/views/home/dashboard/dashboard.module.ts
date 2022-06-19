@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DetalleDeudasComponent } from './detalle-deudas/detalle-deudas.component';
 import { LogicoComponent } from './logico/logico.component';
-
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { LogicoComponent } from './logico/logico.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    ButtonModule
   ]
 })
 export class DashboardModule { }
