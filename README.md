@@ -9,3 +9,4 @@ La api REST es la mas utiliza, ya que este nos permite el envió de objetos JSON
 ORM Conocidas: JDBC, JSP, MONGODB
 Se utilizan para facilitar la conexión entre la base de datos y la app, ya que beneficia implementar menos código. 
 4) Las interfaces son un intermediario entre la acción y la lógica.  
+5) 510
