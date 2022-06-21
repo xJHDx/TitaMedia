@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ViewsRoutingModule } from './views-routing.module';
+import { ConfigService } from '../services/services';
 
 
 @NgModule({
@@ -9,6 +10,7 @@ import { ViewsRoutingModule } from './views-routing.module';
   imports: [
     CommonModule,
     ViewsRoutingModule    
-  ]
+  ],
+  providers:[ConfigService]
 })
 export class ViewsModule { }

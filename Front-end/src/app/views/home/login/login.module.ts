@@ -7,6 +7,8 @@ import { IngresoComponent } from './ingreso/ingreso.component';
 import {ButtonModule} from 'primeng/button';
 import {PasswordModule} from 'primeng/password';
 import {SplitterModule} from 'primeng/splitter';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {SplitterModule} from 'primeng/splitter';
     LoginRoutingModule,
     ButtonModule,
     PasswordModule,
-    SplitterModule 
+    SplitterModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class LoginModule { }
