@@ -6,6 +6,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { IngresoComponent } from './ingreso/ingreso.component';
 import {ButtonModule} from 'primeng/button';
 import {PasswordModule} from 'primeng/password';
+import {SplitterModule} from 'primeng/splitter';
 
 @NgModule({
   declarations: [
@@ -15,8 +16,9 @@ import {PasswordModule} from 'primeng/password';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ButtonModule ,
-    PasswordModule   
+    ButtonModule,
+    PasswordModule,
+    SplitterModule 
   ]
 })
 export class LoginModule { }

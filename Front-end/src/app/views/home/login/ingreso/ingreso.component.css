@@ -1,4 +1,16 @@
 .container{
     border: 1px solid crimson;
+    
+}
 
+.inputs{
+    margin: 1.5ch;
+}
+
+.acciones{
+    margin: 1ch;
+}
+
+.encabezado{
+    margin-top: 1ch;
 }

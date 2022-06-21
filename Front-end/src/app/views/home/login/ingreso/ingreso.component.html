@@ -1,40 +1,46 @@
-
-<p style="margin-top: 8ch;">desde el ingreso </p>
-<div class="card">
-    <div class="container" >
-        <div>
+<div style="margin-top: 10ch;">
+    <div class="container flex flex-column" >
+        <div  >
             <!-- encabezado -->
-            <div>
-
+            <div class="flex justify-content-center encabezado ">
+                <h3>INGRESO</h3> 
             </div>
 
             <!-- Inputd -->
-            <div>
-                <div class="col-12 md:col-4">
-                    <div class="p-inputgroup">
-                        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <input type="text" pInputText placeholder="Username">         
+            <div class="flex justify-content-center inputs" >
+                <div class="flex flex-column">
+                    <div class="flex inputs " >
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input type="text" pInputText placeholder="Username">         
+                        </div>
+                    </div>
+                    <div class="flex inputs" >
+                        <div class="p-inputgroup" >
+                            <span class="p-inputgroup-addon"><i class="pi pi-shield"></i></span>
+                            <input type="password" pInputText placeholder="password">         
+                        </div>
                     </div>
                 </div>
+                
 
             </div>
 
-            <!-- Inputd -->
-            <div>
-                <div class="col-12 md:col-4">
-                    <div class="p-inputgroup">
-                        <span class="p-inputgroup-addon"><i class="pi pi-shield"></i></span>
-                        <input type="password" pInputText placeholder="password">         
-                    </div>
-                </div>
-            </div>
             <!-- Acciones -->
-            <div>
-                <button label="Submit" pPassword>Ingresar</button>
-                <button label="Submit" pPassword>Registrar</button>
+            <div class="flex justify-content-center acciones">
+               
+                <div class="acciones">
+                    <p-button styleClass="p-button-raised p-button-warning" label="Registrar" (click)="registrarBtn()" ></p-button>
+                </div>
+
+                <div class="acciones">
+                    <p-button styleClass="p-button-success" label="Ingresar" ></p-button>
+                </div>
+                
             </div>
 
         </div>       
 
     </div>
 </div>
+
