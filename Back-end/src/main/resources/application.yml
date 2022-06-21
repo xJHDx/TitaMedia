@@ -7,7 +7,7 @@ spring:
     name: portal-bancario
     version: develop
   datasource:
-    url: jdbc:mariadb://localhost:3306/dbPortalBancario
+    url: jdbc:mariadb://192.168.1.56:33066/dbPortalBancario
     username: jhd
     password: 123456
     driver-class-name: org.mariadb.jdbc.Driver

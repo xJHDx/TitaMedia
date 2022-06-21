@@ -10,6 +10,8 @@ import com.jhd.tita.portalbancario.servicio.PortalServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class BusinessManager {
 
@@ -29,6 +31,10 @@ public class BusinessManager {
 
     public String efectuarPago(DetalleDeudaEntity detalleDeudaEntity){
         return portalServices.LogicPago(detalleDeudaEntity);
+    }
+
+    public List<UsuarioEntity> getAllUsuarios(){
+        return portalServices.getUsuarios();
     }
 
 }

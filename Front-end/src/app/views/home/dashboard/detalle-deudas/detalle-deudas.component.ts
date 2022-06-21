@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/services/services';
 
 @Component({
   selector: 'app-detalle-deudas',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalleDeudasComponent implements OnInit {
 
-  constructor() { }
+
+  infoUsuario: any;
+
+  constructor(private configService: ConfigService) { }
 
   ngOnInit(): void {
+    this.configService.getInfoUsuario().subscribe(r=>{
+      console.log(r)
+    })
   }
 
 }

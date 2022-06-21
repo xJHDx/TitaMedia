@@ -9,6 +9,9 @@ import {PasswordModule} from 'primeng/password';
 import {SplitterModule} from 'primeng/splitter';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     PasswordModule,
     SplitterModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MessagesModule,
+    MessageModule,
+    ToastModule
   ]
 })
 export class LoginModule { }

@@ -24,7 +24,7 @@ public class ApiController {
         return new ResponseEntity<>(version, HttpStatus.OK);
     }
 
-    @GetMapping("/auth")
+    @PostMapping("/auth")
     public ResponseEntity<?> authManger(@RequestBody AuthRequest authRequest){
         return new ResponseEntity<>(businessManager.authManager(authRequest),HttpStatus.OK);
     }
@@ -37,6 +37,11 @@ public class ApiController {
     @PostMapping("/RealizarPago")
     public ResponseEntity<?> RealizarPagoDeuda(@RequestBody DetalleDeudaEntity detalleDeudaEntity){
         return new ResponseEntity<>(businessManager.efectuarPago(detalleDeudaEntity),HttpStatus.OK);
+    }
+
+    @GetMapping("/usuarios")
+    public ResponseEntity<?> getAllUsuarios(){
+        return new ResponseEntity<>(businessManager.getAllUsuarios(),HttpStatus.OK);
     }
 
 }

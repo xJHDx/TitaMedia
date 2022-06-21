@@ -81,4 +81,8 @@ public class PortalServices {
         return "Pago Exitoso";
     }
 
+    public List<UsuarioEntity> getUsuarios(){
+        return usuarioRepository.findAll();
+    }
+
 }
