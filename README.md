@@ -38,10 +38,12 @@ Se utilizan para facilitar la conexión entre la base de datos y la app, ya que 
   -  http://localhost:8090/0.1/detalleUsuario
          (Params) ?id = usuario_id
   -  http://localhost:8090/0.1/RealizarPago
-          {
-              "bancoId":2,
-              "usuarioId":3,
-              "valorPagado":0,
-              "fechaPago":"18/06/2022"
-          }
+  
+         {
+             "bancoId":2,
+             "usuarioId":3,
+             "valorPagado":0,
+             "fechaPago":"18/06/2022"
+         }
+                          
  -   http://localhost:8090/0.1/usuarios
