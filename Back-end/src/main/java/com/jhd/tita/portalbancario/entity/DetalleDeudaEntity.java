@@ -14,7 +14,7 @@ public class DetalleDeudaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer facturaId;
-    private int BancoId;
+    private int bancoId;
     private int usuarioId;
     private Integer valorPagado;
 

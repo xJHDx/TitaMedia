@@ -1,4 +1,5 @@
 import { Component, OnInit,OnChanges, SimpleChanges } from '@angular/core';
+import { RealizarPagoModels } from 'src/app/models/realizarPagoModels';
 import { SelectBancoModels } from 'src/app/models/selectBanco';
 import { ConfigService } from 'src/app/services/services';
 
@@ -17,6 +18,8 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
   bancoSelect: any = {};
   displayModal: boolean = false;
   valorPagar: number = 0;
+  realizarPagoModels: any = new RealizarPagoModels;
+
   constructor(private configService: ConfigService) { }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -31,22 +34,22 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.allinfoUsuario();   
+  }
 
+  allinfoUsuario(){
     this.configService.getInfoUsuario().subscribe(r=>{
       this.infoUsuario = r;
       this.configService.getDetalleUsuario(r.usuariosId).subscribe(r=>{
         this.detalleUsuario = r;
-        console.log(this.detalleUsuario);
       });
       
     });
-    
   }
 
   abrirModalPagar(){
     console.log("abrir modal");
     this.displayModal = true;
-    console.log(this.selectBanco);
   }
   consultarBanco(){
 
@@ -54,12 +57,21 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
     	if(this.bancoSelect){
         this.panelDetalleDeuda = true;
       }
-    console.log(this.bancoSelect)
-    console.log(this.selectBanco);
     this.btnPagar = false;
   }
 
   realizarPago(){
+    this.realizarPagoModels.bancoId = this.bancoSelect.bancoId;
+    this.realizarPagoModels.usuarioId = this.infoUsuario.usuariosId;
+    this.realizarPagoModels.valorPagado = this.valorPagar;
+    const fecha = new Date();
+    this.realizarPagoModels.fechaPago = fecha.toLocaleDateString();
+
+    this.configService.setRealizarPago(this.realizarPagoModels).subscribe(r=>{
+      console.log("Pago Exitoso");
+      this.allinfoUsuario();
+    })
+    this.displayModal = false;
     console.log("servicio de pago.")
   }
 

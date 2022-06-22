@@ -62,23 +62,25 @@ public class PortalServices {
 
     public String LogicPago(DetalleDeudaEntity detalleDeudaEntity){
 
+        System.out.println(detalleDeudaEntity);
+
         DeudasUsuarioEntity deudasUsuario = deudasUsuarioRepository.findByBancoIdAndUsuarioId(detalleDeudaEntity.getUsuarioId(),detalleDeudaEntity.getBancoId());
 
-        if(detalleDeudaEntity.getValorPagado() > deudasUsuario.getValorRestanteDeuda() ){
-            System.out.println("es mayor");
+        if( deudasUsuario.getValorRestanteDeuda()  < detalleDeudaEntity.getValorPagado()){
             throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
+        }else {
+
+            Integer nuevoValorPagado = deudasUsuario.getValorPagadoDeuda() + detalleDeudaEntity.getValorPagado();
+            deudasUsuario.setValorPagadoDeuda(nuevoValorPagado);
+
+            Integer nuevoValorRestante = deudasUsuario.getValorRestanteDeuda() - detalleDeudaEntity.getValorPagado();
+            deudasUsuario.setValorRestanteDeuda(nuevoValorRestante);
+
+            deudasUsuarioRepository.save(deudasUsuario);
+            detalleDeudaRepository.save(detalleDeudaEntity);
+            return "Pago Exitoso";
         }
 
-        Integer nuevoValorPagado = deudasUsuario.getValorPagadoDeuda() + detalleDeudaEntity.getValorPagado();
-        deudasUsuario.setValorPagadoDeuda(nuevoValorPagado);
-
-        Integer nuevoValorRestante = deudasUsuario.getValorRestanteDeuda() - detalleDeudaEntity.getValorPagado();
-        deudasUsuario.setValorRestanteDeuda(nuevoValorRestante);
-
-        deudasUsuarioRepository.save(deudasUsuario);
-        detalleDeudaRepository.save(detalleDeudaEntity);
-
-        return "Pago Exitoso";
     }
 
     public List<UsuarioEntity> getUsuarios(){
