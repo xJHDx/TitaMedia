@@ -36,7 +36,11 @@ Se utilizan para facilitar la conexión entre la base de datos y la app, ya que 
         }
                             
   - GET http://localhost:8090/0.1/detalleUsuario
-         (Params) ?id = usuario_id
+  
+         
+          (Params) ?id = usuario_id
+         
+         
   - POST http://localhost:8090/0.1/RealizarPago
   
          {
