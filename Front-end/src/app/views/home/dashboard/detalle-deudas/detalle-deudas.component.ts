@@ -19,7 +19,7 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
   displayModal: boolean = false;
   valorPagar: number = 0;
   realizarPagoModels: any = new RealizarPagoModels;
-
+  pagoRealizado: any = {};
   constructor(private configService: ConfigService) { }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -30,7 +30,9 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
     if(this.selectBanco == null){
       this.btnPagar = true;
       this.panelDetalleDeuda = false;
-    }this.consultarBanco();
+    }
+    this.consultarBanco();
+    
   }
 
   ngOnInit(): void {
@@ -67,7 +69,7 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
     this.realizarPagoModels.fechaPago = fecha.toLocaleDateString();
 
     this.configService.setRealizarPago(this.realizarPagoModels).subscribe(r=>{
-      console.log(r);
+      this.pagoRealizado = r;
       this.allinfoUsuario();
       this.consultarBanco();
     })
