@@ -27,17 +27,17 @@ Se utilizan para facilitar la conexión entre la base de datos y la app, ya que 
 - Comandos y rutas nativas para banck y front. (No Cambia).
 
 ## Endpoint Creados.
- - http://localhost:8090/0.1/version
- - http://localhost:8090/0.1/auth
+ - GET http://localhost:8090/0.1/version
+ - POST http://localhost:8090/0.1/auth
  
        {
             "userName":"titaMedia",  "jhd",  "otros", 
             "password":"123456", "654321", "123"
         }
                             
-  -  http://localhost:8090/0.1/detalleUsuario
+  - GET http://localhost:8090/0.1/detalleUsuario
          (Params) ?id = usuario_id
-  -  http://localhost:8090/0.1/RealizarPago
+  - POST http://localhost:8090/0.1/RealizarPago
   
          {
              "bancoId":2,
@@ -46,4 +46,4 @@ Se utilizan para facilitar la conexión entre la base de datos y la app, ya que 
              "fechaPago":"18/06/2022"
          }
                           
- -   http://localhost:8090/0.1/usuarios
+ - GET http://localhost:8090/0.1/usuarios
