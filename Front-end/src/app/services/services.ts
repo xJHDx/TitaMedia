@@ -22,14 +22,14 @@ export class ConfigService {
     return this.subject.asObservable();
   }
 
-  public getDetalleUsuario():Observable<any>{
-    return this.http.get<any>( environment.apiBaseUrl + "detalleUsuario?id=1")
-  }
-
   public authUsuario(json: any):Observable<any>{
     const headers = { 'content-type': 'application/json'}  
     const body = JSON.stringify(json);
     return this.http.post<any>(environment.apiBaseUrl + "auth" , body, {'headers': headers } );
+  }
+
+  public getDetalleUsuario(usuarioId:number):Observable<any>{
+    return this.http.get<any>(`${environment.apiBaseUrl}detalleUsuario?id=${usuarioId}` )
   }
 
 }

@@ -1,4 +1,122 @@
-<p style="margin-top: 10ch;">detalle-deudas works! desde detalle</p>
-<p-button label="Submit" pPassword>Ingresar</p-button>
+<div>
+  <div style="margin-top: 8ch;">
+    <!-- TITULO Y DETALLE DEL USUARIO -->
+    <div style="margin-left: 5ch; margin-right: 10ch;">
+      <div style="color: blue; ">
+        <h1>Bienvendio {{ detalleUsuario.nombreApellido }}</h1>
+      </div>
 
-{{infoUsuario|json}}
+      <div style="border: 1px solid blue; padding: 2ch;">
+        <p>
+          <strong>Nombres y Apellidos: </strong>
+          {{ detalleUsuario.nombreApellido }}
+        </p>
+        <p><strong>Cedula: </strong> {{ detalleUsuario.cedula }}</p>
+        <p><strong>Telefono: </strong> {{ detalleUsuario.telefono }}</p>
+      </div>
+    </div>
+
+    <!-- selecionar Banco -->
+    <div style="margin: 5ch;" class="flex align-content-start flex-wrap" >
+      <p-dropdown
+        class="flex align-items-center justify-content-center"
+        [options]="detalleUsuario.bancoEntities"
+        [(ngModel)]="selectBanco"
+        optionLabel="nombreBanco"
+        optionValue="bancoId"
+        placeholder="Seleccione Su Banco"
+        [showClear]="true"
+      ></p-dropdown>
+      <i
+        class="pi pi-search flex align-items-center justify-content-center"
+        style="font-size: 1.9rem; margin-left: 0.3ch; color: green; border: 1px solid green; padding: 5px; "
+        (click)="consultarBanco()"
+      ></i>
+    </div>
+    <!-- detalle de la deuda con el banco selecionado -->
+    <div style="margin-left: 5ch; margin-right: 10ch;">
+        <div *ngIf="panelDetalleDeuda" style="border: 1px solid blue; padding: 2ch;" >
+          <p>
+            <strong>valor Deuda: </strong>
+            {{ bancoSelect.deudasUsuario.valorDeuda | json }}
+          </p>
+          <p>
+            <strong>valor Pagado Deuda: </strong>
+            {{ bancoSelect.deudasUsuario.valorPagadoDeuda | json }}
+          </p>
+          <p>
+            <strong>valor Restante Deuda: </strong>
+            {{ bancoSelect.deudasUsuario.valorRestanteDeuda | json }}
+          </p>
+        </div>
+    </div>
+
+    <!-- Mostrar tabla con los pagos -->
+    <div style="margin-left: 5ch; margin-right: 10ch;">
+        <div *ngIf="panelDetalleDeuda" style="margin-top: 3ch;">
+          <p-table
+            [value]="bancoSelect.deudasUsuario.detallesPagos"
+            responsiveLayout="scroll"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th>valor Pagado</th>
+                <th>fechaPago</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+              <tr>
+                <td>{{ product.valorPagado }}</td>
+                <td>{{ product.fechaPago }}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+    </div>
+
+    <!-- Boton de pago de la Deuda Sale Modal. de pago -->
+    <div >
+      <div class="acciones" style="margin: 5ch;">
+        <p-button
+          styleClass="p-button-rounded"
+          label="Pagar Deuda"
+          (click)="abrirModalPagar()"
+          [disabled]="btnPagar"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="displayModal">
+    <p-dialog
+    header="Efecturar Pago"
+    [(visible)]="displayModal"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <!-- Inputs PAgo. -->
+  
+    <p>
+      <strong>valor Restante Deuda: </strong>
+      {{ bancoSelect.deudasUsuario.valorRestanteDeuda | json }}
+    </p>
+    
+    <div class="field col-12 md:col-3">
+        <p><strong>valor a pagar</strong></p>
+        <p-inputNumber inputId="integeronly" [(ngModel)]="valorPagar">
+        </p-inputNumber>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button
+        icon="pi pi-check"
+        (click)="realizarPago()"
+        label="Pagar"
+        styleClass="p-button-text"
+      ></p-button>
+    </ng-template>
+  </p-dialog>
+</div>
+
