@@ -25,3 +25,15 @@ Se utilizan para facilitar la conexión entre la base de datos y la app, ya que 
 
 - Se utilizo una Base de datos MariaDb. Por favor Cambiar el Enrutamiento del servidor de Datos en el YML.(Actualizar las Url de enlase donde se ejecuto el Script Sql DB).
 - Comandos y rutas nativas para banck y front. (No Cambia).
+
+## Endpoint Creados.
+  http://localhost:8090/0.1
+                           /version
+                           /auth
+                           - {
+                                "userName":"titaMedia",  "jhd",  "otros", 
+                                "password":"123456", "654321", "123"
+                            }
+                           /detalleUsuario
+                           /RealizarPago
+                           /usuarios
