@@ -10,3 +10,11 @@ ORM Conocidas: JDBC, JSP, MONGODB
 Se utilizan para facilitar la conexión entre la base de datos y la app, ya que beneficia implementar menos código. 
 4) Las interfaces son un intermediario entre la acción y la lógica.  
 5) 510
+
+## Tecnologias.
+* 	[Maven](https://maven.apache.org/) - Dependency Management
+* 	[JDK](http://www.oracle.com/technetwork/java/javase/downloads/) - Java™ Platform, Standard Edition Development Kit 
+* 	[Spring Boot](https://spring.io/projects/spring-boot) - Framework to ease the bootstrapping and development of new Spring Applications
+*   [Angular](https://angular.io/guide/router-tutorial) - FrontEnd
+* 	[Git](https://git-scm.com/) - Free and Open-Source distributed version control system 
+* 	[SQL](https://url/) - Base de Datos MariaDB
