@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class PortalServices {
@@ -63,13 +64,15 @@ public class PortalServices {
     public String LogicPago(DetalleDeudaEntity detalleDeudaEntity){
 
         System.out.println(detalleDeudaEntity);
+        DeudasUsuarioEntity deudasUsuario = new DeudasUsuarioEntity();
 
-        DeudasUsuarioEntity deudasUsuario = deudasUsuarioRepository.findByBancoIdAndUsuarioId(detalleDeudaEntity.getUsuarioId(),detalleDeudaEntity.getBancoId());
 
-        if( deudasUsuario.getValorRestanteDeuda()  < detalleDeudaEntity.getValorPagado()){
-            throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
-        }else {
-
+        try {
+            deudasUsuario = deudasUsuarioRepository.findByBancoIdAndUsuarioId(detalleDeudaEntity.getBancoId(),detalleDeudaEntity.getUsuarioId());
+            System.out.println(deudasUsuario);
+            if( deudasUsuario.getValorRestanteDeuda()  < detalleDeudaEntity.getValorPagado() ){
+                throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
+            }
             Integer nuevoValorPagado = deudasUsuario.getValorPagadoDeuda() + detalleDeudaEntity.getValorPagado();
             deudasUsuario.setValorPagadoDeuda(nuevoValorPagado);
 
@@ -78,9 +81,11 @@ public class PortalServices {
 
             deudasUsuarioRepository.save(deudasUsuario);
             detalleDeudaRepository.save(detalleDeudaEntity);
-            return "Pago Exitoso";
-        }
 
+        }catch (Exception e){
+            throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
+        }
+        return "Pago Exitoso";
     }
 
     public List<UsuarioEntity> getUsuarios(){

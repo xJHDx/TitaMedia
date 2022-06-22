@@ -13,6 +13,6 @@ public interface DeudasUsuarioRepository extends JpaRepository<DeudasUsuarioEnti
 
     List<DeudasUsuarioEntity> findByUsuarioId(int usuarioId);
 
-    DeudasUsuarioEntity findByBancoIdAndUsuarioId(Integer bancoId, Integer usuarioId);
+   DeudasUsuarioEntity findByBancoIdAndUsuarioId(int bancoId, int usuarioId);
 
 }
