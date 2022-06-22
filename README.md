@@ -27,12 +27,14 @@ Se utilizan para facilitar la conexión entre la base de datos y la app, ya que 
 - Comandos y rutas nativas para banck y front. (No Cambia).
 
 ## Endpoint Creados.
-  http://localhost:8090/0.1/version
-  http://localhost:8090/0.1/auth
+ - http://localhost:8090/0.1/version
+ - http://localhost:8090/0.1/auth
+ 
                            - {
                                 "userName":"titaMedia",  "jhd",  "otros", 
                                 "password":"123456", "654321", "123"
                             }
-    http://localhost:8090/0.1/detalleUsuario
-    http://localhost:8090/0.1/RealizarPago
-    http://localhost:8090/0.1/usuarios
+                            
+  -  http://localhost:8090/0.1/detalleUsuario
+  -  http://localhost:8090/0.1/RealizarPago
+ -   http://localhost:8090/0.1/usuarios
