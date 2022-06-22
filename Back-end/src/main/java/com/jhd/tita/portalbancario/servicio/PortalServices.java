@@ -63,14 +63,11 @@ public class PortalServices {
 
     public String LogicPago(DetalleDeudaEntity detalleDeudaEntity){
 
-        System.out.println(detalleDeudaEntity);
-        DeudasUsuarioEntity deudasUsuario = new DeudasUsuarioEntity();
-
+        DeudasUsuarioEntity deudasUsuario;
 
         try {
             deudasUsuario = deudasUsuarioRepository.findByBancoIdAndUsuarioId(detalleDeudaEntity.getBancoId(),detalleDeudaEntity.getUsuarioId());
-            System.out.println(deudasUsuario);
-            if( deudasUsuario.getValorRestanteDeuda()  < detalleDeudaEntity.getValorPagado() ){
+            if( deudasUsuario.getValorRestanteDeuda()  < detalleDeudaEntity.getValorPagado() || detalleDeudaEntity.getValorPagado() <= 0 ){
                 throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
             }
             Integer nuevoValorPagado = deudasUsuario.getValorPagadoDeuda() + detalleDeudaEntity.getValorPagado();
