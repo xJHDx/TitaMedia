@@ -61,7 +61,7 @@ public class PortalServices {
     }
 
 
-    public String LogicPago(DetalleDeudaEntity detalleDeudaEntity){
+    public DeudasUsuarioEntity LogicPago(DetalleDeudaEntity detalleDeudaEntity){
 
         DeudasUsuarioEntity deudasUsuario;
 
@@ -82,7 +82,7 @@ public class PortalServices {
         }catch (Exception e){
             throw new ApiException(ErrorEnum.ERROR_PAGO,"Valor a pagar es mayor al valor que debe");
         }
-        return "Pago Exitoso";
+        return deudasUsuario;
     }
 
     public List<UsuarioEntity> getUsuarios(){

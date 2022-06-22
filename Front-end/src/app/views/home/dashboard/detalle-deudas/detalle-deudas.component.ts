@@ -23,14 +23,14 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
   constructor(private configService: ConfigService) { }
   
   ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+    console.log("Changes")  
   }
   
   ngDoCheck(){
     if(this.selectBanco == null){
       this.btnPagar = true;
       this.panelDetalleDeuda = false;
-    }
+    }this.consultarBanco();
   }
 
   ngOnInit(): void {
@@ -43,7 +43,6 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
       this.configService.getDetalleUsuario(r.usuariosId).subscribe(r=>{
         this.detalleUsuario = r;
       });
-      
     });
   }
 
@@ -51,8 +50,8 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
     console.log("abrir modal");
     this.displayModal = true;
   }
-  consultarBanco(){
 
+  consultarBanco(){
   this.bancoSelect = this.detalleUsuario.bancoEntities.find((element: any) => element.bancoId === this.selectBanco);
     	if(this.bancoSelect){
         this.panelDetalleDeuda = true;
@@ -68,11 +67,13 @@ export class DetalleDeudasComponent implements OnInit, OnChanges {
     this.realizarPagoModels.fechaPago = fecha.toLocaleDateString();
 
     this.configService.setRealizarPago(this.realizarPagoModels).subscribe(r=>{
-      console.log("Pago Exitoso");
+      console.log(r);
       this.allinfoUsuario();
+      this.consultarBanco();
     })
     this.displayModal = false;
-    console.log("servicio de pago.")
+    console.log("servicio de pago.");
+    
   }
 
 }
